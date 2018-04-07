@@ -5,7 +5,7 @@ import { observer, inject } from "mobx-react";
 import { observable } from "mobx";
 import {
     Navbar, NavbarGroup, NavbarHeading, NavbarDivider, Alignment,
-    Button, Intent, Dialog, InputGroup, Tooltip, Tag
+    Button, Intent, Dialog, InputGroup, Tooltip, Tag, Alert
 } from "@blueprintjs/core";
 
 
@@ -127,6 +127,41 @@ class SignIn extends React.Component {
 }
 
 
+@observer
+class SignOut extends React.Component {
+    @observable isOpen = false;
+
+    render() {
+        return (
+            <div>
+                <Button onClick={this.handleToggle}>
+                    Sign Out
+                </Button>
+
+                <Alert
+                    cancelButtonText="Cancel"
+                    confirmButtonText="Okay"
+                    intent={Intent.SUCCESS}
+                    isOpen={this.isOpen}
+                    onConfirm={() => {
+                        this.handleToggle();
+                        this.props.onConfirm();
+                    }}
+                    onCancel={this.handleToggle}
+                >
+                    <h4>Sign Out</h4>
+                    <p>Are you sure?</p>
+                </Alert>
+            </div>
+        );
+    }
+
+    handleToggle = () => {
+        this.isOpen = !this.isOpen;
+    };
+}
+
+
 @inject("currentUser") @observer
 class Navigation extends React.Component {
     componentWillMount() {
@@ -148,7 +183,11 @@ class Navigation extends React.Component {
                     </Link>
                 </NavbarGroup>
 
-                {currentUser.user ? null : (
+                {currentUser.user ? (
+                    <NavbarGroup align={Alignment.RIGHT}>
+                        <SignOut onConfirm={currentUser.signOut} />
+                    </NavbarGroup>
+                ) : (
                     <NavbarGroup align={Alignment.RIGHT}>
                         <SignIn currentUser={currentUser} />
 

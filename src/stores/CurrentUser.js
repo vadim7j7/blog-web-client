@@ -21,6 +21,11 @@ export default class CurrentUser {
         this.user = new UserModel(resp.data.profile);
     }
 
+    @action.bound signOut() {
+        this.user = null;
+        localStorage.removeItem("token");
+    }
+
     @action signIn(email, password, callback) {
         this.loading = true;
 
