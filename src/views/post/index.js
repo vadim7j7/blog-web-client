@@ -26,6 +26,8 @@ export default class PostView extends React.Component {
                         key={postItemStory.post.id}
                         title={postItemStory.post.title}
                         body={postItemStory.post.body}
+                        tags={postItemStory.post.tags}
+                        user={postItemStory.post.userModel}
                     />
                 )}
             </div>

@@ -8,6 +8,7 @@ import Post from "./Post";
 export default class Posts extends React.Component {
     render() {
         const { items } = this.props;
+
         return (
             <div>
                 {items.map(post => (
@@ -16,6 +17,8 @@ export default class Posts extends React.Component {
                         slug={post.slug}
                         title={post.title}
                         body={post.body}
+                        tags={post.tags}
+                        user={post.userModel}
                     />
                 ))}
             </div>

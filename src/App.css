@@ -6,6 +6,10 @@
   margin-bottom: 20px;
 }
 
+.mgr-5 {
+  margin-right: 5px;
+}
+
 
 .wrapper {
   margin: 0 20px;
@@ -13,4 +17,23 @@
 
 .align-center {
   text-align: center;
+}
+
+
+.avatar {
+  width: 100px;
+}
+
+.avatar.small {
+  width: 25px;
+}
+
+.avatar img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+
+.user-info {
+  padding: 20px;
 }
