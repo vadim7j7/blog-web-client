@@ -129,6 +129,10 @@ class SignIn extends React.Component {
 
 @inject("currentUser") @observer
 class Navigation extends React.Component {
+    componentWillMount() {
+        this.props.currentUser.checkLogin();
+    }
+
     render() {
         const { currentUser } = this.props;
 
