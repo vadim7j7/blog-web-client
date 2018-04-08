@@ -13,13 +13,17 @@ export default class PostListStory {
         return this.pagination.size === 4;
     }
 
-    @action async fetch(page=1) {
+    @action fetch(page=1) {
         this.loading = true;
 
-        const resp = await loadPosts(page).catch(_ => {});
-        this.fetchData(resp);
-
-        this.loading = false;
+        loadPosts(page)
+            .then((resp) => {
+                this.fetchData(resp);
+            })
+            .finally(() => {
+                this.loading = false;
+            })
+        ;
     }
 
     @action fetchData(resp) {

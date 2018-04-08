@@ -8,18 +8,20 @@ export default class PostItemStory {
     @observable loading = false;
     @observable post = null;
 
-    @action async fetch(slug) {
+    @action fetch(slug) {
         this.loading = true;
 
-        const resp = await loadPost(slug).catch(_ => {});
-        this.fetchData(resp);
-
-        this.loading = false;
+        loadPost(slug)
+            .then((resp) => {
+                this.fetchData(resp);
+            })
+            .finally(() => {
+                this.loading = false;
+            })
+        ;
     }
 
     @action fetchData(resp) {
-        if (!resp) { return; }
-
         this.post = new PostModel(resp.data.post);
     }
 }

@@ -11,14 +11,15 @@ export default class CurrentUser {
     @observable user    = null;
     @observable error   = null;
 
-    @action async checkLogin() {
-        const resp = await checkLogin().catch(() => { this.user = null; });
-        if (!resp) {
-            this.user = null;
-            return;
-        }
-
-        this.user = new UserModel(resp.data.profile);
+    @action checkLogin() {
+        checkLogin()
+            .then((resp) => {
+                this.user = new UserModel(resp.data.profile);
+            })
+            .catch(() => {
+                this.user = null;
+            })
+        ;
     }
 
     @action.bound signOut() {

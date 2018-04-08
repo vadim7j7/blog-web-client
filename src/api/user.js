@@ -1,8 +1,8 @@
 import axios from "axios";
 
 
-export async function checkLogin() {
-    return await axios.get("/auth");
+export function checkLogin() {
+    return axios.get("/auth");
 }
 
 export function login(email, password) {
