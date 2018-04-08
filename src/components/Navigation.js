@@ -2,10 +2,11 @@ import React from "react";
 import Link from "react-router-dom/es/Link";
 import { observer, inject } from "mobx-react";
 import {
-    Navbar, NavbarGroup, NavbarHeading, NavbarDivider, Alignment, Button, Intent
+    Navbar, NavbarGroup, NavbarHeading, NavbarDivider, Alignment
 } from "@blueprintjs/core";
 
 import SignIn from "./Auth/SignIn";
+import SignUp from "./Auth/SignUp";
 import SignOut from "./Auth/SignOut";
 
 
@@ -40,9 +41,7 @@ class Navigation extends React.Component {
 
                         <NavbarDivider />
 
-                        <Button intent={Intent.WARNING}>
-                            Sign Up
-                        </Button>
+                        <SignUp currentUser={currentUser} />
                     </NavbarGroup>
                 )}
             </Navbar>

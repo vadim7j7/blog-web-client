@@ -24,6 +24,7 @@ class Password extends React.Component {
             <InputGroup
                 placeholder="Enter your password..."
                 rightElement={lockButton}
+                intent={this.props.intent}
                 type={this.state.showPassword ? "text" : "password"}
                 value={this.props.value}
                 onChange={this.props.onChange}
@@ -33,8 +34,13 @@ class Password extends React.Component {
 }
 
 Password.propTypes = {
+    intent:   PropTypes.string,
     value:    PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+};
+
+Password.defaultProps = {
+    intent: Intent.NONE
 };
 
 
