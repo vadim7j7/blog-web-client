@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { observer } from "mobx-react";
 
 import Post from "./Post";
 
 
 @observer
-export default class Posts extends React.Component {
+class Posts extends React.Component {
     render() {
         const { items } = this.props;
 
@@ -25,3 +26,10 @@ export default class Posts extends React.Component {
         );
     }
 }
+
+Posts.propTypes = {
+    items: PropTypes.array.isRequired,
+};
+
+
+export default Posts;

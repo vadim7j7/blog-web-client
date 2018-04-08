@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { observer } from "mobx-react";
 import { Popover, PopoverInteractionKind } from "@blueprintjs/core";
 
@@ -6,7 +7,7 @@ import { BACK_END_HOST } from "../config/api";
 
 
 @observer
-export default class UserBadge extends React.Component {
+class UserBadge extends React.Component {
     render() {
         const { data } = this.props;
 
@@ -33,3 +34,10 @@ export default class UserBadge extends React.Component {
         );
     }
 }
+
+UserBadge.propTypes = {
+    data: PropTypes.object.isRequired,
+};
+
+
+export default UserBadge;

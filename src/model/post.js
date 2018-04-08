@@ -1,4 +1,4 @@
-import { observable, computed } from "mobx";
+import { observable, computed, toJS } from "mobx";
 
 import UserModel from "./user";
 
@@ -30,7 +30,7 @@ export default class PostModel {
     }
 
     @computed get tags() {
-        return this.post.get("tagList");
+        return toJS(this.post.get("tagList"));
     }
 
     @computed get userModel() {

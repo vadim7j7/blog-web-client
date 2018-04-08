@@ -19,7 +19,9 @@ export default class HomeView extends React.Component {
 
         return (
             <div className="mgb-20">
-                <Posts items={postListStory.posts} />
+                <Posts
+                    items={postListStory.posts.map(item => item)}
+                />
 
                 {postListStory.loading ? (
                     <div className="align-center">

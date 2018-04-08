@@ -39,9 +39,9 @@ class SignOut extends React.Component {
     };
 }
 
-
 SignOut.propTypes = {
-    onConfirm: PropTypes.func,
+    onConfirm: PropTypes.func.isRequired,
 };
+
 
 export default SignOut;

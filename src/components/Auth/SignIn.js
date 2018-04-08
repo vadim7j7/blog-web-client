@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { observer } from "mobx-react/index";
 import { observable } from "mobx";
 import { Button, Intent, Dialog, InputGroup, Tag } from "@blueprintjs/core";
-import SignOut from "./SignOut";
 
 import Password from "./Password";
 
@@ -97,8 +96,9 @@ class SignIn extends React.Component {
     };
 }
 
-SignOut.propTypes = {
-    currentUser: PropTypes.object,
+SignIn.propTypes = {
+    currentUser: PropTypes.object.isRequired,
 };
+
 
 export default SignIn;
